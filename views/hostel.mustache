@@ -1,0 +1,85 @@
+<html>
+<head>
+<!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<title>HOSTEL LIST</title>
+</head>
+<body>
+<h1 class="center card-panel grey lighten-3">LIST OF ALL THE LISTED HOSTELS </h1>
+<h4 class="right btn ">Admin</h4>
+
+<input type="text" name="" id="myInput" placeholder="Enter Name of Hostel to Search" onkeyup="searchFun()">
+
+<a href="/add" class="waves-effect waves-light btn-large">Add New Hostel</a>
+
+ 
+ <table >
+        <thead>
+          <tr>
+              <th>S.No.</th>
+              <th>Hostel Name</th>
+              <th>Description</th>
+              <th>Pricing</th>
+              <th>Contact No.</th>
+              <th>Food Items</th>
+              <th>Rating</th>
+              <th>Delete</th>
+              <th>Edit</th>
+          </tr>
+        </thead>
+
+        <tbody id="myTable">
+          {{#rows}}
+     <tr>
+         <td>{{id}}</td>
+         <td>{{name}}</td>
+         <td>{{description}}</td>
+         <td>{{pricing}}</td>
+         <td>{{contactno}}</td>
+         <td>{{fooditems}}</td>
+         <td>{{rating}}</td>
+         <td>
+         <form action = "/hostel/delete/{{id}}" method ="post"> 
+         <button class="btn waves-effect waves-light" type="submit">Delete</button>
+         </form>
+         </td>
+         <td>
+         <a  class="btn waves-effect waves-light" href="/hostel/edit/{{id}}">Edit</a>
+         </td>
+
+     </tr>
+
+     {{/rows}}
+        </tbody>
+      </table>
+      <script>
+      const searchFun = () =>{
+          let filter = document.getElementById('myInput').value.toUpperCase() ;
+          let myTable = document.getElementById('myTable');
+          let tr = myTable.getElementsByTagName('tr') ;
+          for(var i = 0 ; i<tr.length; i++){
+            let td = tr[i].getElementsByTagName('td')[1] ;
+            if(td){
+              let textvalue = td.textContent || td.innerHTML ;
+
+              if(textvalue.toUpperCase().indexOf(filter)> -1 ){
+                tr[i].style.display = "" ;
+              }
+              else{
+                tr[i].style.display = "none" ;
+              }
+            }
+          }
+      }
+      </script>
+            
+
+
+
+
+</body>
+
+</html>

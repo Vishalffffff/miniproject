@@ -1,0 +1,30 @@
+<html>
+<head>
+<!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<title>HOSTEL EDITING</title>
+</head>
+<body>
+    <form action="/hostel-edit/{{hostel.id}}" method="post">
+     <label >Hostel Name</label>
+     <input type="text" name="name" value ="{{hostel.name}}" placeholder="" />
+     <label >Description</label>
+     <input type="text" name="description" value ="{{hostel.description}}" placeholder="" />
+     <label >Pricing</label>
+     <input type="text" name="pricing" value ="{{hostel.pricing}}" placeholder="" />
+     <label >Contact No.</label>
+     <input type="text" name="contactno" value ="{{hostel.contactno}}" placeholder="" />
+     <label >Food Items</label>
+     <input type="text" name="fooditems" value ="{{hostel.fooditems}}" placeholder="" />
+     <label >Rating</label>
+     <input type="text" name="rating" value ="{{hostel.rating}}" placeholder="" />
+     <button class="btn waves-effect waves-light" type="submit">Save</button>
+     
+    </form>
+
+</body>
+
+</html>
