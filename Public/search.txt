@@ -1,22 +1,4 @@
-<html>
-<head>
-<!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<title>HOSTEL LIST</title>
-</head>
-<body>
-<h1 class="center card-panel grey lighten-3">LIST OF ALL THE LISTED HOSTELS </h1>
-<h4 class="right btn ">Admin</h4>
-
-<input type="text" name="" id="myInput" placeholder="Enter Name of Hostel to Search" onkeyup="searchFun()">
-
-<a href="/add" class="waves-effect waves-light btn-large">Add New Hostel</a>
-
- 
- <table >
+<table >
         <thead>
           <tr>
               <th>S.No.</th>
@@ -26,17 +8,13 @@
               <th>Contact No.</th>
               <th>Food Items</th>
               <th>Rating</th>
-              <th>Nearby Colleges</th>
-              <th>Image 1</th>
-              <th>Image 2</th>
-              <th>Image 3</th>
               <th>Delete</th>
               <th>Edit</th>
           </tr>
         </thead>
 
         <tbody id="myTable">
-      {{#rows}}    
+          {{#rows}}
      <tr>
          <td>{{id}}</td>
          <td>{{name}}</td>
@@ -45,11 +23,6 @@
          <td>{{contactno}}</td>
          <td>{{fooditems}}</td>
          <td>{{rating}}</td>
-         <td>{{colleges}}</td>
-         <td>{{image1}}</td>
-         <td>{{image2}}</td>
-         <td>{{image3}}</td>
-
          <td>
          <form action = "/hostel/delete/{{id}}" method ="post"> 
          <button class="btn waves-effect waves-light" type="submit">Delete</button>
@@ -84,12 +57,3 @@
           }
       }
       </script>
-      
-            
-
-
-
-
-</body>
-
-</html>

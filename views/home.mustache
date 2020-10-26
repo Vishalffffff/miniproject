@@ -1,0 +1,482 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeelsHome</title>
+    <!--source links-->
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--font awesome cdn-->
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <!--bootstrap cdn-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+   
+    <!--jquery cdn-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+    <!--slick carousel cdn-->
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script> 
+    <!--css link-->
+    <link rel="stylesheet" href="css/index.css"> 
+    <!--font-awesome cdn-->
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <!--google fonts(source sans pro)-->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon-home.png">
+</head>
+<body>
+
+ <!--*********HEADER STARTS***********-->
+<div class="header" id="topheader">
+ <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+ <!--  <div class="conatiner p-1">-->
+  <a class="navbar-brand font-weight-bold text-white" href="#">FeelsHome</a>
+  <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon text-white"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto ">
+      <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+       <a class="nav-link" href="#servicediv">Services</a>
+      <a class="nav-link" href="hostels.html">Hostel/PG</a>
+      <a class="nav-link" href="login.html">Account</a>
+      <a class="nav-link" href="#contactid">Contact Us</a>
+    </div>
+  </div>
+<!--</div>-->
+</nav>
+
+<section class="header-section">
+  <div class="center-div">
+    <h1 class="font-weight-bold">LIVE IN A BETTER PLACE</h1>
+    <p>All Trusted Hostels/PG's Are Here For You.</p>
+    <div class="header-search">
+      <input type="search" id="myInput"  onkeyup="searchFun()" placeholder="Search Hostel/PG">
+      <button>
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  </div>
+
+</section>
+</div>
+ <!--*********HEADER ENDS*************-->
+ <!--Table Starts Here-->
+ <br>
+ <section>
+ 
+  <table >
+    <thead>
+      <tr>
+         <!-- <th>S.No.</th> -->
+          <th>Hostel Name</th>
+          <th>Description</th>
+          <th>Pricing</th>
+         <!-- <th>Contact No.</th> -->
+        <!--  <th>Food Items</th> -->
+          <th>Rating</th>
+          <th>Nearby Colleges</th>
+          
+          <th>View</th>
+      </tr>
+    </thead>
+
+    <tbody id="myTable">
+      {{#rows}}
+ <tr>
+     <!--<td>{{id}}</td>-->
+     <td>{{name}}</td>
+     <td>{{description}}</td>
+     <td>₹{{pricing}}</td>
+     <!--<td>{{contactno}}</td> -->
+     <!--<td>{{fooditems}}</td> -->
+     <td>{{rating}}</td>
+     <td>{{colleges}}</td>
+     <td>
+     <a  class="btn waves-effect waves-light" href="/view/{{id}}">View</a>
+     </td>
+
+ </tr>
+
+ {{/rows}}
+    </tbody>
+  </table>
+  <script>
+  const searchFun = () =>{
+      let filter = document.getElementById('myInput').value.toUpperCase() ;
+      let myTable = document.getElementById('myTable');
+      let tr = myTable.getElementsByTagName('tr') ;
+      for(var i = 0 ; i<tr.length; i++){
+        let td = tr[i].getElementsByTagName('td')[4] ;
+        if(td){
+          let textvalue = td.textContent || td.innerHTML ;
+
+          if(textvalue.toUpperCase().indexOf(filter)> -1 ){
+            tr[i].style.display = "" ;
+          }
+          else{
+            tr[i].style.display = "none" ;
+          }
+        }
+      }
+  }
+  </script>
+
+ </section>
+
+ <!--SERVICES DIV STARTS
+
+ <section class="header-extradiv" id="servicediv">
+   <div class="container">
+     <div class="row">
+       <div class="extra-div col-lg-4 col-md-4 col-12">
+         <a href="#"><i class="fa-3x fas fa-building"></i></a>
+         <h2>BEST HOSTELS/PG</h2>
+         <p>All the top rated Hostels/PG are here for you on very easonable prices with top-rated reviews.</p>
+       </div>
+       <div class="extra-div col-lg-4 col-md-4 col-12">
+         <a href="#"><i class="fa-3x fas fa-file-alt"></i></a>
+        <h2>LEGAL PROCEDURE</h2>
+        <p>Claiming 100% security with following all the legal paper work as per the government notice.</p>
+      </div>
+      <div class="extra-div col-lg-4 col-md-4 col-12">
+        <a href="#"><i class="fa-3x fas fa-utensils"></i></a>
+        <h2>FOOD SERVICE</h2>
+        <p>We've EXCLUSIVE free PG/HOSTEL food services delivered at your own place assurin complete hygiene. </p>
+      </div>
+     </div>
+   </div>
+
+ </section>
+
+ *********SERVICES DIV ENDS*******--> 
+
+
+ <!--********COUNTER SECTION STARTS************-->
+
+<section class="project-work">
+  <div class="container">
+    <p class="text-center font-weight-bold"> MORE THAN 100 HOSTEL/PG ALLOTED THROUGH US<P>
+  </div>
+  <div class="container d-flex justify-content-around align-items-center text-center">
+    <div>
+      <h1 class="count"> 123 </h1>
+      <p>HOSTEL PROVIDED</p>
+    </div>
+
+     <div>
+      <h1 class="count"> 123 </h1>
+      <p>HOSTEL PROVIDED</p>
+    </div>
+
+     <div>
+      <h1 class="count"> 123 </h1>
+      <p>HOSTEL PROVIDED</p>
+    </div>
+
+     <div>
+      <h1 class="count"> 123 </h1>
+      <p>HOSTEL PROVIDED</p>
+    </div>
+
+  </div>
+</section>
+
+ <!--********COUNTER SECTION ENDS************-->
+
+ <!--********HAPPY CLIENTS SECTION STARTS************
+  <section class="happyclients">
+    <div class="container headings text-center">
+      <h1 class="text-center font-weight-bold ">OUR HAPPY CLIENTS</h1>
+      <p class="text-capitalize pt-1">Our Satisfied Customers Says</p>
+    </div>
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner container">
+        <div class="carousel-item active">
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-12">
+              <div class="box">
+                <a href=""><img src="images/sale.jpg" class="img-fluid img-thumbnail"></a>
+                <p class="m-4">I'm Very Happy with the website it's interface is smooth.</p>
+                <h1>VISHAL SRIVASTAVA</h1>
+                <h2>STUDENT(RKGIT)</h2>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-12">
+              <div class="box">
+                <a href=""><img src="images/sale.jpg" class="img-fluid img-thumbnail"></a>
+                <p class="m-4">I'm Very Happy with the website it's interface is smooth.</p>
+                <h1>VISHAL SRIVASTAVA</h1>
+                <h2>STUDENT(RKGIT)</h2>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-12">
+              <div class="box">
+                <a href=""><img src="images/sale.jpg" class="img-fluid img-thumbnail"></a>
+                <p class="m-4">I'm Very Happy with the website it's interface is smooth.</p>
+                <h1>VISHAL SRIVASTAVA</h1>
+                <h2>STUDENT(RKGIT)</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-12">
+              <div class="box">
+                <a href=""><img src="images/sale.jpg" class="img-fluid img-thumbnail"></a>
+                <p class="m-4">I'm Very Happy with the website it's interface is smooth.</p>
+                <h1>VISHAL SRIVASTAVA</h1>
+                <h2>STUDENT(RKGIT)</h2>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-12">
+              <div class="box">
+                <a href=""><img src="images/sale.jpg" class="img-fluid img-thumbnail"></a>
+                <p class="m-4">I'm Very Happy with the website it's interface is smooth.</p>
+                <h1>VISHAL SRIVASTAVA</h1>
+                <h2>STUDENT(RKGIT)</h2>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-12">
+              <div class="box">
+                <a href=""><img src="images/sale.jpg" class="img-fluid img-thumbnail"></a>
+                <p class="m-4">RKGIT CHHOD KE KAHI BHI ADMISSION LELO.</p>
+                <h1>VISHAL SRIVASTAVA</h1>
+                <h2>STUDENT(RKGIT)</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-12">
+              <div class="box">
+                <a href=""><img src="images/sale.jpg" class="img-fluid img-thumbnail"></a>
+                <p class="m-4">I'm Very Happy with the website it's interface is smooth.</p>
+                <h1>VISHAL SRIVASTAVA</h1>
+                <h2>STUDENT(RKGIT)</h2>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-12">
+              <div class="box">
+                <a href=""><img src="images/sale.jpg" class="img-fluid img-thumbnail"></a>
+                <p class="m-4">I'm Very Happy with the website it's interface is smooth.</p>
+                <h1>VISHAL SRIVASTAVA</h1>
+                <h2>STUDENT(RKGIT)</h2>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-12">
+              <div class="box">
+                <a href=""><img src="images/sale.jpg" class="img-fluid img-thumbnail"></a>
+                <p class="m-4">I'm Very Happy with the website it's interface is smooth.</p>
+                <h1>VISHAL SRIVASTAVA</h1>
+                <h2>STUDENT(RKGIT)</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+  </section>
+ ********HAPPY CLIENTS SECTION ENDS************
+
+ ********CONTACT US SECTION STARTS************
+
+<section class="contactus" id="contactid">
+  <div class="container headings text-center">
+    <h1 class="text-center font-weight-bold">CONTACT US</h1>
+    <p class="text-capitalize pt-1">We're Here To Help And Answer Any Question You Might Have.</p>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-10 offset-lg-2 offset-md-2 offset-1">
+        <form>
+         
+          <div class="form-group">
+            <input type="text" class="form-control" id="username" required autocomplete="off" placeholder="Enter Your Name">
+          </div>
+         
+          <div class="form-group">
+            <input type="email" class="form-control" id="email" required autocomplete="off" placeholder="Enter Your E-mail">
+             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control" id="mobile" required autocomplete="off" placeholder="Enter Your Mobile Number"> 
+          </div>
+          <div class="form-group">
+           <textarea class="form-control" id="comment" rows="4" placeholder="Enter Your Message"></textarea>
+          </div>
+
+          <div class="d-flex justify-content-center form-button">
+          <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+ ********CONTACT US SECTION ENDS************
+
+ ********COLLEGE SECTION STARTS************
+
+ <section class="college">
+  <div class="container">
+    <h2 class="text-center font-weight-bold"> IN ASSOCIATION WITH<h2>
+  </div>
+  <div class="container d-flex justify-content-around align-items-center text-center">
+    <div>
+      <img src="images/jubilant.png">
+    </div>
+
+     <div>
+      <img src="images/jubilant.png">
+    </div>
+
+     <div>
+      <img src="images/jubilant.png">
+    </div>
+
+     <div>
+      <img src="images/jubilant.png">
+    </div>
+
+  </div>
+  </section>
+
+ ********COLLEGE SECTION ENDS************
+
+ ********NEWSLETTER SECTION STARTS************
+
+ <section class="newsletter" id="newsletterid">
+  <div class="container headings text-center">
+    <h1 class="text-center font-weight-bold">SUBSCRIBE TO OUR NEWSLETTER</h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2 col-12">
+        <div class="input-group mb-3 pt-4">
+          <input type="text" class="form-control news-input" placeholder="Your E-mail" >
+          <div class="input-group-append">
+            <span class="input-group-text" id="basic-addon2">Subscribe</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+ ********NEWSLETTER SECTION ENDS************
+
+ 
+ ********FOOTER SECTION STARTS************-->
+
+<footer class="footersection">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-12 footer-div">
+        <div>
+          <h3>ABOUT FeelsHome</h3>
+          <p>FeelsHome Wants You To In A Place Where You Feels Like Home. We Provides You The Rooms As Per Your Needs With All The Essential Necessities. </p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-12 footer-div text-center">
+        <div>
+          <h3>USEFUL LINKS</h3>
+          <li><a href="">Home</a></li>
+          <li><a href="#servicediv">Services</a></li>
+          <li><a href="hostels.html">Hostel/PG</a></li>
+          <li><a href="login.html">Account</a></li>
+          <li><a href="#contactid">Contact Us</a></li>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-12 footer-div">
+        <div>
+          <h3>NEWSLETTER</h3>
+          <p>For Bussiness Purposes & For Hiring Purposes Subscribe To Our Newsletter.</p>
+          <div class="container newsletter-main">
+            <div class="row">
+              <div class="col-lg-12 col-12">
+                <div class="input-group mb-3 pt-4">
+                  <input type="text" class="form-control news-input" placeholder="Your E-mail" >
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">Subscribe</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="mt-5 text-center">
+        <p>Copyright 2020 All rights reserved | This is the official website of FeelsHome.  </p>
+      </div>
+      <div class="scrolltop float-right">
+          <i class="fa fa-arrow-up" onclick="topFunction()" id="myBtn"></i>
+      </div>
+  </div>
+</footer>
+
+ <!--********FOOTER SECTION ENDS************-->
+
+
+
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <!--waypoint cdn-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js" integrity="sha512-CEiA+78TpP9KAIPzqBvxUv8hy41jyI3f2uHi7DGp/Y/Ka973qgSdybNegWFciqh6GrN2UePx2KkflnQUbUhNIA==" crossorigin="anonymous"></script>
+  <!--counter up cdn-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js" integrity="sha512-d8F1J2kyiRowBB/8/pAWsqUl0wSEOkG5KATkVV4slfblq9VRQ6MyDZVxWl2tWd+mPhuCbpTB4M7uU/x9FlgQ9Q==" crossorigin="anonymous"></script>
+ <!--j query cdn-->
+ <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+ 
+ <script>     //jquery for counter
+  $('.count').counterUp({
+    delay:10,
+    time:3000
+  })
+
+  //Get The Button
+  mybutton = document.getElementById("myBtn");
+
+  //when the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction(){
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20){
+      mybutton.style.display = "block";
+    } else{
+      mybutton.style.display = "none";
+    }
+  }
+
+  //when the user clicks on the button, scroll to the top of the documnet 
+  function topFunction(){
+    document.body.scrollTop = 0; //For safari
+    document.documentElement.scrollTop = 0; //For chrome, firefox, IE and opera
+  }
+ </script>
+
+ </body>
+ </html>
